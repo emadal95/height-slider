@@ -6,6 +6,7 @@ class HeightSliderInteral extends StatelessWidget {
   final Color accentColor;
   final Color currentHeightTextColor;
   final Color sliderCircleColor;
+  final Color lineBackgroundColor;
 
   const HeightSliderInteral(
       {Key key,
@@ -13,7 +14,8 @@ class HeightSliderInteral extends StatelessWidget {
       @required this.primaryColor,
       @required this.accentColor,
       @required this.currentHeightTextColor,
-      @required this.sliderCircleColor})
+      @required this.sliderCircleColor,
+      @required this.lineBackgroundColor})
       : super(key: key);
 
   @override
@@ -28,7 +30,7 @@ class HeightSliderInteral extends StatelessWidget {
           Row(
             children: <Widget>[
               SliderCircle(sliderCircleColor: this.sliderCircleColor),
-              Expanded(child: SliderLine(primaryColor: this.primaryColor)),
+              Expanded(child: SliderLine(primaryColor: this.primaryColor, lineBackgroundColor: this.lineBackgroundColor)),
             ],
           ),
         ],
@@ -66,8 +68,9 @@ class SliderLabel extends StatelessWidget {
 
 class SliderLine extends StatelessWidget {
   final Color primaryColor;
+  final Color lineBackgroundColor;
 
-  const SliderLine({Key key, @required this.primaryColor}) : super(key: key);
+  const SliderLine({Key key, @required this.primaryColor, @required this.lineBackgroundColor}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -80,7 +83,7 @@ class SliderLine extends StatelessWidget {
                 child: Container(
                   height: 2.0,
                   decoration: BoxDecoration(
-                      color: i.isEven ? this.primaryColor : Colors.white),
+                      color: i.isEven ? this.primaryColor : this.lineBackgroundColor),
                 ),
               )),
     );
