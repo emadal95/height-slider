@@ -11,6 +11,7 @@ class HeightSlider extends StatefulWidget {
   final String personImagePath;
   final Color primaryColor;
   final Color accentColor;
+  final Color lineBackgroundColor;
   final Color numberLineColor;
   final Color currentHeightTextColor;
   final Color sliderCircleColor;
@@ -27,7 +28,8 @@ class HeightSlider extends StatefulWidget {
       this.numberLineColor,
       this.currentHeightTextColor,
       this.sliderCircleColor,
-      this.personImagePath})
+      this.personImagePath,
+      this.lineBackgroundColor})
       : super(key: key);
 
   int get totalUnits => maxHeight - minHeight;
@@ -122,6 +124,7 @@ class _HeightSliderState extends State<HeightSlider> {
     return Positioned(
       child: HeightSliderInteral(
           height: widget.height,
+          lineBackgroundColor: widget.lineBackgroundColor ?? Theme.of(context).backgroundColor,
           primaryColor: widget.primaryColor ?? Theme.of(context).primaryColor,
           accentColor: widget.accentColor ?? Theme.of(context).accentColor,
           currentHeightTextColor:
