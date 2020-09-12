@@ -63,7 +63,7 @@ class SliderLabel extends StatelessWidget {
         bottom: 2.0,
       ),
       child: Text(
-        heightLbl,
+        heightLbl ?? '',
         style: TextStyle(
           fontSize: 14.0,
           color: this.currentHeightTextColor,
