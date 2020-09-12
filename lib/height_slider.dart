@@ -8,6 +8,7 @@ class HeightSlider extends StatefulWidget {
   final int maxHeight;
   final int minHeight;
   final int height;
+  final String heightLabel;
   final String personImagePath;
   final Color primaryColor;
   final Color accentColor;
@@ -17,20 +18,21 @@ class HeightSlider extends StatefulWidget {
   final Color sliderCircleColor;
   final ValueChanged<int> onChange;
 
-  const HeightSlider(
-      {Key key,
-      @required this.height,
-      @required this.onChange,
-      this.maxHeight = 190,
-      this.minHeight = 145,
-      this.primaryColor,
-      this.accentColor,
-      this.numberLineColor,
-      this.currentHeightTextColor,
-      this.sliderCircleColor,
-      this.personImagePath,
-      this.lineBackgroundColor})
-      : super(key: key);
+  const HeightSlider({
+    Key key,
+    @required this.height,
+    @required this.heightLabel,
+    @required this.onChange,
+    this.maxHeight = 190,
+    this.minHeight = 145,
+    this.primaryColor,
+    this.accentColor,
+    this.numberLineColor,
+    this.currentHeightTextColor,
+    this.sliderCircleColor,
+    this.personImagePath,
+    this.lineBackgroundColor,
+  }) : super(key: key);
 
   int get totalUnits => maxHeight - minHeight;
 
@@ -124,7 +126,9 @@ class _HeightSliderState extends State<HeightSlider> {
     return Positioned(
       child: HeightSliderInteral(
           height: widget.height,
-          lineBackgroundColor: widget.lineBackgroundColor ?? Theme.of(context).backgroundColor,
+          heightLabel: widget.heightLabel,
+          lineBackgroundColor:
+              widget.lineBackgroundColor ?? Theme.of(context).backgroundColor,
           primaryColor: widget.primaryColor ?? Theme.of(context).primaryColor,
           accentColor: widget.accentColor ?? Theme.of(context).accentColor,
           currentHeightTextColor:
